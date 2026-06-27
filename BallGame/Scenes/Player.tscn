@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cqwt0jbelnmrc"]
+
+[ext_resource type="Script" uid="uid://8yixirodom78" path="res://Scenes/Player.cs" id="1_rpqav"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_g62qe"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_g62qe"]
+
+[node name="Player" type="RigidBody3D" unique_id=547433617]
+script = ExtResource("1_rpqav")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=2098817969]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17779732, 0)
+mesh = SubResource("SphereMesh_g62qe")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=576375182]
+shape = SubResource("SphereShape3D_g62qe")

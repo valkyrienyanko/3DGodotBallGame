@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://teujbtpp885y"]
+
+[ext_resource type="Script" uid="uid://be5kcm10ipjpb" path="res://Scenes/Enemy.cs" id="1_m1htj"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_g62qe"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g62qe"]
+albedo_color = Color(0.8390109, 0, 0.24485233, 1)
+metallic = 1.0
+metallic_specular = 1.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_g62qe"]
+
+[node name="Enemy" type="RigidBody3D" unique_id=1127305477]
+script = ExtResource("1_m1htj")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=858928691]
+mesh = SubResource("SphereMesh_g62qe")
+surface_material_override/0 = SubResource("StandardMaterial3D_g62qe")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1082714888]
+shape = SubResource("SphereShape3D_g62qe")
