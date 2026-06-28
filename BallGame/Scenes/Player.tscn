@@ -2,16 +2,35 @@
 
 [ext_resource type="Script" uid="uid://8yixirodom78" path="res://Scenes/Player.cs" id="1_rpqav"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rpqav"]
+bounce = 0.6
+
 [sub_resource type="SphereMesh" id="SphereMesh_g62qe"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rpqav"]
+albedo_color = Color(0, 0, 0, 1)
+metallic = 1.0
+metallic_specular = 1.0
+roughness = 0.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_g62qe"]
 
-[node name="Player" type="RigidBody3D" unique_id=547433617]
+[node name="Player" type="Node3D" unique_id=1793950147]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=547433617 node_paths=PackedStringArray("_jumpRayCast")]
+mass = 15.0
+physics_material_override = SubResource("PhysicsMaterial_rpqav")
 script = ExtResource("1_rpqav")
+_speed = 150.0
+_jumpForce = 30.0
+_jumpRayCast = NodePath("../RayCast3D")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=2098817969]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17779732, 0)
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="RigidBody3D" unique_id=2098817969]
 mesh = SubResource("SphereMesh_g62qe")
+surface_material_override/0 = SubResource("StandardMaterial3D_rpqav")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=576375182]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=576375182]
 shape = SubResource("SphereShape3D_g62qe")
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=808609892]
+target_position = Vector3(0, -0.6, 0)
